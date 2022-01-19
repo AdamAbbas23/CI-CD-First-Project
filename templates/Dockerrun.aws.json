@@ -4,8 +4,8 @@
     "Name": "$CI_REGISTRY_IMAGE:$APP_VERSION"
   },
   "Authentication": {
-    "Bucket": "$AWS_EB_S3_BUCKET",
-    "Key": "$DOCKER_AUTH_FILE"
+    "Bucket": "$AWS_S3_BUCKET",
+    "Key": "auth.json"
   },
   "Ports": [
     {
