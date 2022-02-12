@@ -627,6 +627,9 @@ COPY build /usr/share/nginx/html
 - if this course was helpful and you have learned something new
 - YOU can help me create more content like this one by subscribing to my YouTube channel
 
+![Valentin saying thank you](docs/thank-you.png)
+
+
 #### Fun facts about this project
 
 * 🕐 150 hours of work (and counting)
