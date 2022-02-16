@@ -636,9 +636,15 @@ COPY build /usr/share/nginx/html
 * ☕️ 74 coffees
 * ∞ amount of fun!
 
-#### 📚 Resources
+#### 💬 Let's stay in touch 
 
 * [Stay THANK YOU by subscribing](http://www.youtube.com/channel/UCUUl_HXJjU--iYjUkIgEcTw?sub_confirmation=1)
 * [Join the DevOps newsletter](https://sendfox.com/lp/1x9k59)
 * [Follow me on Twitter](https://twitter.com/vdespa)
 * [Let's connect on LinkedIn](https://www.linkedin.com/in/vdespa/)
+
+#### 📚 Offical GitLab resources
+
+* [10 tips to make you a productive GitLab user](https://about.gitlab.com/blog/2021/02/18/improve-your-gitlab-productivity-with-these-10-tips/)
+* [Here's how to do GitOps with GitLab](https://about.gitlab.com/blog/2021/10/21/gitops-with-gitlab/)
+* [GitLab Infrastructure management](https://docs.gitlab.com/ee/user/infrastructure/)
