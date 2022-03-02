@@ -32,7 +32,7 @@ test:
 * [How to set up your SSH key for GitLab on macOS](https://medium.com/devops-with-valentine/2021-how-to-setup-your-ssh-key-for-gitlab-on-macos-dfccec6904fb?sk=fe992efb74d7bd794cf76bb8a26f0437)
 * [How to set up your SSH key for GitLab on Linux](https://medium.com/devops-with-valentine/2021-how-to-your-ssh-key-for-gitlab-on-linux-1b94e2a3a49a?sk=1bca4bdb5c879f29be839aa42623113d)
 * [Git for GitLab (Beginner's FULL COURSE)](https://www.youtube.com/watch?v=4lxvVj7wlZw)
-* [How to configure your own Gitlab CI Runner](https://www.youtube.com/watch?v=G8ZONHOTAQk)
+* [How to Configure your own GitLab Runner with a Docker Executor on AWS EC2](https://medium.com/devops-with-valentine/how-to-configure-your-own-gitlab-runner-with-a-docker-executor-on-aws-ec2-d76c7be0660d?sk=fcb49b94811d5daeb5eb182e0afe467f)
 
 ### Lesson 3 - Your first pipeline
 
