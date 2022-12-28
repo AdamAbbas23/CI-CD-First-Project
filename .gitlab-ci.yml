@@ -1,0 +1,5 @@
+build website:
+    image: node:18
+    script:
+        - yarn install
+        - yarn build
