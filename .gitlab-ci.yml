@@ -3,3 +3,4 @@ build website:
     script:
         - yarn install
         - yarn build
+
