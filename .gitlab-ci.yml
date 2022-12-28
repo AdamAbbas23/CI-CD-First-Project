@@ -1,4 +1,5 @@
 stages:
+    - .pre
     - build
     - test
 
@@ -12,6 +13,13 @@ build website:
         paths:
             - build
 
+linter:
+    image: node:16-alpine
+    stage: .pre
+    script:
+        - yarn install
+        - yarn lint
+
 test website:
     image: alpine
     stage: test
@@ -20,7 +28,7 @@ test website:
 
 unit tests:
     image: node:16-alpine
-    stage: test
+    stage: .pre
     script: 
          - yarn install
          - yarn test
