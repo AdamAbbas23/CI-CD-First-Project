@@ -2,6 +2,10 @@ stages:
     - build
     - test
     - deploy
+    - post deploy
+
+variables:
+    APP_BASE_URL: http://cicd-course-adam.s3-website.eu-west-2.amazonaws.com
 
 build website:
     image: node:16-alpine
@@ -36,3 +40,11 @@ deploy to s3:
     script:
         - aws --version
         - aws s3 sync build s3://$AWS_S3_BUCKET --delete
+
+production tests: 
+    stage: post deploy
+    image: curlimages/curl
+    rules:
+        - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+    script: 
+        - curl $APP_BASE_URL | grep "React App"
