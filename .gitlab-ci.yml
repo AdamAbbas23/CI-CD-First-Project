@@ -50,5 +50,6 @@ deploy to staging :
 
 deploy to production:
     stage: deploy production
+    when: manual
     environment: production
     extends: .deploy
