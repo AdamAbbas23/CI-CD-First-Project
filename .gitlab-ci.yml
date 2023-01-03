@@ -27,9 +27,7 @@ test website:
         - sleep 10
         - curl http://localhost:3000 | grep "React App"
 
-deploy to staging :
-    stage: deploy staging 
-    environment: staging
+.deploy:
     image:
         name: amazon/aws-cli:2.9.11
         entrypoint: [""]
@@ -40,16 +38,12 @@ deploy to staging :
         - aws s3 sync build s3://$AWS_S3_BUCKET --delete
         - curl $CI_ENVIRONMENT_URL | grep "React App"
 
+deploy to staging :
+    stage: deploy staging 
+    environment: staging
+    extends: .deploy
 
 deploy to production:
     stage: deploy production
     environment: production
-    image:
-        name: amazon/aws-cli:2.9.11
-        entrypoint: [""]
-    rules:
-        - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
-    script:
-        - aws --version
-        - aws s3 sync build s3://$AWS_S3_BUCKET --delete
-        - curl $CI_ENVIRONMENT_URL | grep "React App"
+    extends: .deploy
