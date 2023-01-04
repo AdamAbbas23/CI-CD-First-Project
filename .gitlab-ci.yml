@@ -60,5 +60,5 @@ deploy to production:
         - cat auth.json
         - aws s3 cp Dockerrun.aws.json s3://$AWS_S3_BUCKET/Dockerrun.aws.json
         - aws s3 cp auth.json s3://$AWS_S3_BUCKET/auth.json
-        - aws elasticbeanstalk create-application-version --application-name "$APP_NAME" --version-label $ --source-bundle S3Bucket=$AWS_S3_BUCKET,S3Key=Dockerrun.aws.json
+        - aws elasticbeanstalk create-application-version --application-name "$APP_NAME" --version-label $APP_VERSION --source-bundle S3Bucket=$AWS_S3_BUCKET,S3Key=Dockerrun.aws.json
         - aws elasticbeanstalk update-environment  --application-name "$APP_NAME" --version-label $APP_VERSION --environment-name $APP_ENV_NAME
