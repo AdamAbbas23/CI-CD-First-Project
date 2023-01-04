@@ -1,6 +1,7 @@
 stages:
     - build
     - package
+    - test
 
 variables:
     APP_VERSION: $CI_PIPELINE_IID
@@ -28,4 +29,13 @@ build docker image:
         - docker build -t $CI_REGISTRY_IMAGE -t $CI_REGISTRY_IMAGE:$APP_VERSION .
         - docker image ls
         - docker push --all-tags $CI_REGISTRY_IMAGE
+
+test docker image:
+    stage:
+    image: curlimages/curl
+    services:
+        - name: $CI_REGISTRY_IMAGE:$APP_VERSION
+          alias: website
+    script: 
+        - curl http://.../version.html | grep $APP_VERSION
 
