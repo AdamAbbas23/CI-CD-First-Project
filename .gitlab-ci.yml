@@ -20,7 +20,7 @@ build website:
         paths:
             - build
 
-.build docker image:
+build docker image:
     stage: package
     image: docker:20.10.12
     services: 
@@ -31,7 +31,7 @@ build website:
         - docker image ls
         - docker push --all-tags $CI_REGISTRY_IMAGE
 
-.test docker image:
+test docker image:
     stage:
     image: curlimages/curl
     services:
@@ -45,14 +45,20 @@ deploy to production:
        name: amazon/aws-cli:2.4.11
        entrypoint: [""]
    stage: deploy
+   variables: 
+           APP_NAME: my website
+           APP_ENV_NAME: Mywebsite-env
+           
    environment: production
    script:
         - aws --version
         - yum install -y gettext
-        - export DEPLOY_TOKEN=$(echo $GITLAB_DEPLOY_TOKEN | td -d "\n" | base64) 
+        - export DEPLOY_TOKEN=$(echo $GITLAB_DEPLOY_TOKEN | tr -d "\n" | base64) 
         - envsubst < templates/Dockerrun.aws.json > Dockerrun.aws.json
         - envsubst < templates/auth.json > auth.json
         - cat Dockerrun.aws.json
         - cat auth.json
         - aws s3 cp Dockerrun.aws.json s3://$AWS_S3_BUCKET/Dockerrun.aws.json
         - aws s3 cp auth.json s3://$AWS_S3_BUCKET/auth.json
+        - aws elasticbeanstalk create-application-version --application-name "$APP_NAME" --version-label $ --source-bundle S3Bucket=$AWS_S3_BUCKET,S3Key=Dockerrun.aws.json
+        - aws elasticbeanstalk update-environment  --application-name "$APP_NAME" --version-label $APP_VERSION --environment-name $APP_ENV_NAME
