@@ -44,15 +44,15 @@ deploy to production:
    image:
        name: amazon/aws-cli:2.4.11
        entrypoint: [""]
-    stage: deploy
-    environment: production
-    script:
+   stage: deploy
+   environment: production
+   script:
         - aws --version
         - yum install -y gettext
         - export DEPLOY_TOKEN=$(echo $GITLAB_DEPLOY_TOKEN | td -d "\n" | base64) 
-        - envsubst < templates/dockerrun.aws.json > dockerrun.aws.json
+        - envsubst < templates/Dockerrun.aws.json > Dockerrun.aws.json
         - envsubst < templates/auth.json > auth.json
-        - cat dockerrun.aws.json
+        - cat Dockerrun.aws.json
         - cat auth.json
-        - aws s3 cp dockerrun.aws.json s3://$AWS_S3_BUCKET/dockerrun.aws.json
+        - aws s3 cp Dockerrun.aws.json s3://$AWS_S3_BUCKET/Dockerrun.aws.json
         - aws s3 cp auth.json s3://$AWS_S3_BUCKET/auth.json
